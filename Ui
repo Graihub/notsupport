@@ -1,0 +1,74 @@
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "GameNotSupportedUI"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.Parent = PlayerGui
+
+local Background = Instance.new("Frame")
+Background.Parent = ScreenGui
+Background.Size = UDim2.new(1,0,1,0)
+Background.BackgroundColor3 = Color3.fromRGB(0,0,0)
+Background.BackgroundTransparency = 0.35
+
+local Main = Instance.new("Frame")
+Main.Parent = Background
+Main.Size = UDim2.new(0,0,0,0)
+Main.Position = UDim2.new(0.5,-210,0.5,-90)
+Main.BackgroundColor3 = Color3.fromRGB(25,25,25)
+
+local Corner = Instance.new("UICorner")
+Corner.CornerRadius = UDim.new(0,12)
+Corner.Parent = Main
+
+local Stroke = Instance.new("UIStroke")
+Stroke.Color = Color3.fromRGB(255,170,60)
+Stroke.Thickness = 2
+Stroke.Parent = Main
+
+local Title = Instance.new("TextLabel")
+Title.Parent = Main
+Title.Size = UDim2.new(1,0,0,60)
+Title.BackgroundTransparency = 1
+Title.Text = "GAME NOT SUPPORTED"
+Title.TextSize = 32
+Title.TextColor3 = Color3.fromRGB(255,170,60)
+
+Title.FontFace = Font.new(
+    "rbxasset://fonts/families/Oswald.json",
+    Enum.FontWeight.Bold,
+    Enum.FontStyle.Normal
+)
+
+local Line = Instance.new("Frame")
+Line.Parent = Main
+Line.Size = UDim2.new(0.8,0,0,2)
+Line.Position = UDim2.new(0.1,0,0.35,0)
+Line.BackgroundColor3 = Color3.fromRGB(255,170,60)
+Line.BorderSizePixel = 0
+
+local Desc = Instance.new("TextLabel")
+Desc.Parent = Main
+Desc.Size = UDim2.new(1,-20,0,80)
+Desc.Position = UDim2.new(0,10,0.45,0)
+Desc.BackgroundTransparency = 1
+Desc.Text = "This script only support blox fruit.\nPlease join a supported game."
+Desc.TextSize = 18
+Desc.TextColor3 = Color3.fromRGB(220,220,220)
+Desc.TextWrapped = true
+
+Desc.FontFace = Font.new(
+    "rbxasset://fonts/families/Oswald.json",
+    Enum.FontWeight.Regular,
+    Enum.FontStyle.Normal
+)
+
+TweenService:Create(
+    Main,
+    TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
+    {Size = UDim2.new(0,420,0,180)}
+):Play()
